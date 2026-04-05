@@ -1,0 +1,186 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Ink scale — warm near-black for paper feel */
+  --color-ink-950: #0a0c10;
+  --color-ink-900: #14171d;
+  --color-ink-800: #1f242d;
+  --color-ink-700: #394453;
+  --color-ink-600: #5a6778;
+  --color-ink-500: #7c8898;
+  --color-ink-400: #9ba6b6;
+  --color-ink-300: #c1c9d3;
+  --color-ink-200: #dfe3ea;
+  --color-ink-100: #ecedf1;
+
+  /* Paper surfaces */
+  --color-canvas: #f5f3ec;
+  --color-canvas-deep: #ebe8de;
+  --color-surface: #fcfaf4;
+  --color-surface-raised: #ffffff;
+  --color-hairline: #d9d5c8;
+  --color-hairline-strong: #beb8a5;
+
+  /* Brick/sienna accent — CTAs, highlights */
+  --color-accent-50: #fbf0ec;
+  --color-accent-100: #f7ded5;
+  --color-accent-200: #ecb7a5;
+  --color-accent-500: #c85a3d;
+  --color-accent-600: #b94a2f;
+  --color-accent-700: #9a3a24;
+  --color-accent-800: #6f2818;
+
+  /* Stock status — muted to fit paper palette */
+  --color-healthy-50: #eef4ec;
+  --color-healthy-100: #d6e5d2;
+  --color-healthy-500: #4e8a46;
+  --color-healthy-600: #3d6e37;
+  --color-healthy-700: #2f5629;
+
+  --color-warning-50: #f7efda;
+  --color-warning-100: #ecddb3;
+  --color-warning-500: #b88124;
+  --color-warning-600: #95671b;
+  --color-warning-700: #6f4d13;
+
+  --color-critical-50: #f7e5e0;
+  --color-critical-100: #edc6bd;
+  --color-critical-500: #b94a2f;
+  --color-critical-600: #9a3a24;
+  --color-critical-700: #6f2818;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-canvas);
+    color: var(--color-ink-900);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'ss01' on, 'ss02' on, 'cv11' on;
+    background-image:
+      radial-gradient(
+        1200px 600px at 100% -10%,
+        rgba(185, 74, 47, 0.05) 0%,
+        transparent 60%
+      ),
+      linear-gradient(
+        to right,
+        rgba(20, 23, 29, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(20, 23, 29, 0.025) 1px,
+        transparent 1px
+      );
+    background-size: auto, 64px 64px, 64px 64px;
+    background-attachment: fixed;
+  }
+
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-hairline);
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-mono);
+    font-feature-settings: 'zero' on;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-sans);
+    letter-spacing: -0.025em;
+  }
+
+  .font-mono-tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'zero' on;
+  }
+
+  .tracking-kicker {
+    letter-spacing: 0.22em;
+  }
+
+  .tracking-ledger {
+    letter-spacing: 0.14em;
+  }
+
+  .dot-divider::before {
+    content: '§';
+    margin: 0 0.5rem;
+    color: var(--color-hairline-strong);
+    font-weight: 500;
+  }
+
+  .animate-rise {
+    animation: rise 560ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .animate-rise-delay-1 {
+    animation: rise 560ms cubic-bezier(0.2, 0.8, 0.2, 1) 80ms both;
+  }
+
+  .animate-rise-delay-2 {
+    animation: rise 560ms cubic-bezier(0.2, 0.8, 0.2, 1) 160ms both;
+  }
+
+  .animate-rise-delay-3 {
+    animation: rise 560ms cubic-bezier(0.2, 0.8, 0.2, 1) 240ms both;
+  }
+
+  .animate-pulse-soft {
+    animation: pulseSoft 1.6s ease-in-out infinite;
+  }
+
+  .animate-breathe {
+    animation: breathe 2.4s ease-in-out infinite;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulseSoft {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes breathe {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(0.85);
+    }
+  }
+}
