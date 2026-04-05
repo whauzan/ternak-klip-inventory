@@ -163,4 +163,4 @@ Claude AI was used as a development assistant for code scaffolding, component st
 
 ## Live Demo
 
-_Deployment link: TBD_
+_Deployment link: https://ternak-klip-inventory.whauzan.dev_
